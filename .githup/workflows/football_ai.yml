@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Get code
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Python
@@ -18,11 +18,13 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: Install packages
+      - name: Install dependencies
         run: |
           pip install feedparser
           pip install groq
 
       - name: Run Football AI
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
           python main.py
