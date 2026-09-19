@@ -40,6 +40,7 @@ jobs:
         run: |
           git config user.email "bot@footballai.com"
           git config user.name "Football AI Bot"
+          git pull --rebase
           git add news.db
           git diff --staged --quiet || git commit -m "Update news.db"
           git push
